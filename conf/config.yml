@@ -1,0 +1,58 @@
+checkFile:
+  # 设置扫描目录间隔，单位秒 
+  set_ck_dir_time: 100
+  # 需要监控的目录
+  dir:
+    - /opt/lampp/htdocs
+  # 白名单
+  exclude_dir:
+    - /opt/lampp/htdocs/test
+  # 设置扫描日志的时间
+  set_ck_file_time: 100
+  # 需要监控的日志文件，单位秒
+  log:
+    - /var/log/secure
+    - /opt/lampp/logs/access_log
+    - logs/command.log
+  # 对配置文件进行检测
+  sca:
+    - /opt/lampp/etc/php.ini
+  # 打印网络流量
+  print_net: true
+  # 设置配置文件扫描时间
+  set_ck_sca_time: 10000
+  # 设置多少等级发送邮件和封闭IP
+  set_send_email_and_block: 10
+  # 设置邮箱配置信息
+  # 发件人
+  set_send_email: 1424741814@qq.com
+  # 收件人
+  set_get_email: 1424741814@qq.com
+  # 设置密码
+  set_token_email: dnVsdmdsc2hwcHFsZ2VnYw==
+  # 设置检测协议
+  protocol: http
+  # 设置白名单
+  white_ip:
+    - 192.168.33.28
+  # 设置IP访问阈值
+  number: 20 # 单位次数
+  # 设置IP访问时间
+  set_ck_net_outtime: 1 # 单位s
+  # 设置NF监听流量
+  nfqueue: true
+  # 设置监听信道
+  queue: 1
+  # 设置网卡
+  iface: ens33
+  # 运程监控配置文件列表
+  # 是否开启远程服务
+  remote: false
+  etc:
+    - '/opt/lampp/etc/php.ini'
+  # 远程主机
+  rhost:
+    - hostnum: 1
+      ip: 192.168.235.137
+      user: root
+      passwd: '985654789'

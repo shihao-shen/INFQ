@@ -1,0 +1,17 @@
+# id: 为规则编号，唯一，用来给规则做标识
+# title: 为规则标题
+# level: 等级，1-12，12代表危险程度最高
+# decoder_key: 为解码器的名字
+# type: 默认为文本日志（text），可以设置为command
+# method: 声明什么方式触发的事件
+# url：声明源头
+- id: 1
+  title: PHP未关闭php版本信息
+  level: 4
+  rules: expose_php=On
+  method: SCA
+- id: 2
+  title: PHP未禁止请求参数为全局变量
+  level: 4
+  rules: register_globals=On
+  method: SCA

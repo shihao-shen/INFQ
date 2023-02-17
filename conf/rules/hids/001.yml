@@ -1,0 +1,32 @@
+# id: 为规则编号，唯一，用来给规则做标识
+# title: 为规则标题
+# level: 等级，1-12，12代表危险程度最高
+# decoder_key: 为解码器的名字
+# type: 默认为文本日志（text），可以设置为command
+# method: 声明什么方式触发的事件
+# url：声明源头
+- id: 3001
+  title: sql注入攻击
+  level: 4
+  decoder_key: apache_access 
+  rules: select%20|union%20
+  method: log
+- id: 3002
+  title: 反弹shell
+  decoder_key: netstat
+  method: netstat
+  url: netstat -anpt # 针对命令，用于标识日志出处
+  level: 12
+  rules: \S+:\d+\s+ESTABLISHED\s+\d+\/bash
+
+- id: 3003 # 唯一
+  title: 遭受大量SQL注入攻击 # 标题兼加描述
+  # decoder_key: sql # 绑定解码器
+  level: 7 # 预警等级，10级后发送邮件
+  # action: reject # 针对于NFQ，用于操作流量，可选参数，reject、drop或accept
+  if:
+    id: 3001
+    number: 10
+    time: 10
+  method: log # 规则类型，目前可以输入任意值、
+

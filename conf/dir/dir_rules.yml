@@ -1,0 +1,6 @@
+- id: 1
+  title: 一句话木马
+  pcre: eval\(
+  method: File
+  url: ~
+  level: 9

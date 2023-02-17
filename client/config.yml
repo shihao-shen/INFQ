@@ -1,0 +1,19 @@
+  etc:
+    - '/opt/lampp/etc/php.ini'  #apache配置
+    - '/opt/lampp/etc/my.cnf'   #mysql配置
+  
+  logs :
+    - '/opt/lampp/logs/access_log'
+    - '/opt/lampp/logs/mysql.log'
+    
+
+  status:
+    - 'ens33' #网卡名称
+    - 'mem'
+    - 'cpu'
+    
+
+  rhost:
+      ip: '192.168.10.129'
+      port : 1122
+

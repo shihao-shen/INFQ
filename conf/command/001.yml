@@ -1,0 +1,7 @@
+# 运行命令
+# id为编号，用于标识，唯一
+# time，执行时间
+# shell：需要执行的命令
+- id: 1
+  time: 10
+  shell: 'netstat -anpt'

@@ -1,0 +1,26 @@
+- id: 1001 # 唯一
+  title: 疑似sql注入攻击 # 标题兼加描述
+  decoder_key: sql # 绑定解码器
+  level: 2 # 预警等级，10级后发送邮件
+  action: drop # 针对于NFQ，用于操作流量，可选参数，reject、drop或accept
+  rules: union%20|select%20 # 匹配g
+  method: NET # 规则类型，目前可以输入任意值、
+
+- id: 1002 # 唯一
+  title: 遭受大量SQL注入攻击 # 标题兼加描述
+  # decoder_key: sql # 绑定解码器
+  level: 7 # 预警等级，10级后发送邮件
+  # action: reject # 针对于NFQ，用于操作流量，可选参数，reject、drop或accept
+  if:
+    id: 1001
+    number: 10
+    time: 10
+  method: NET # 规则类型，目前可以输入任意值、
+
+- id: 1003 # 唯一
+  title: 访问敏感数据 # 标题兼加描述
+  decoder_key: phpinfo # 绑定解码器
+  level: 2 # 预警等级，10级后发送邮件
+  action: drop # 针对于NFQ，用于操作流量，可选参数，reject、drop或accept
+  rules: phpinfo\.php # 匹配g
+  method: NET # 规则类型，目前可以输入任意值、

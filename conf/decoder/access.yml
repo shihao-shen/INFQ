@@ -1,0 +1,13 @@
+- apache_access:
+     id: 1
+     pcre: (\d+\.\d+\.\d+\.\d+).+\[.+\]\s+"(\S+)\s+(\S+)
+     fields: ['ip', 'method', 'url']
+- netstat:
+     pcre: (\S+:\d+)\s+\S+\s+(\d+\/bash)
+     fields: ['destip', 'pid']
+- sql:
+     pcre: (\S+)\s+(\S+)
+     fields: ['method', 'url']
+- phpinfo:
+     pcre: (phpinfo\.php)
+     fields: ['url']
