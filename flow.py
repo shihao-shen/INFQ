@@ -38,7 +38,8 @@ class Capture:
         # 流量裁决
         self.verdict = 'accept'
         # 是否打印流量
-        print_net = config['checkFile']['logger.info_net']
+        # print(config['checkFile']['print_net'])
+        self.print_net = config['checkFile']['print_net']
         # 用于记录规则调用次数
         self.check_rule_number = tools.CountRule()
 
@@ -103,8 +104,9 @@ class Capture:
 
             # 替换换行和回车为逗号
             request_body = x.lastlayer().original.decode().replace('\r\n', ',')
+            
             if self.print_net:
-                logger.info(request_body)
+                print(request_body)
             # 获取源IP地址
             srcip = x.src
             # 白名单跳过

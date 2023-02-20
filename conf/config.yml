@@ -18,7 +18,7 @@ checkFile:
   sca:
     # - /opt/lampp/etc/php.ini
   # 打印网络流量
-  logger.info_net: true
+  print_net: true
   # 设置配置文件扫描时间
   set_ck_sca_time: 10000
   # 设置多少等级发送邮件和封闭IP
@@ -50,9 +50,3 @@ checkFile:
   remote: false
   etc:
     # - '/opt/lampp/etc/php.ini'
-  # 远程主机
-  rhost:
-    - hostnum: 1
-      ip: 192.168.235.137
-      user: root
-      passwd: '985654789'

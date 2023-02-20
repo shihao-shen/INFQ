@@ -53,7 +53,7 @@ class Ids:
         # logger.info(self.sca_rules)
         self.etc_files = self.config['checkFile']['etc']
         # 需要远程监控主机信息
-        self.rhost_info = self.config['checkFile']['rhost']
+        # self.rhost_info = self.config['checkFile']['rhost']
         # FileCheck文件监控
         self.filecheck = FileCheck(self.dir_files, self.log_files, self.dir_rules, self.decoder)
 
@@ -69,20 +69,20 @@ class Ids:
         # logger.info(self.decoder)
         # self.etc_rules = tools.decode_yaml('./conf/rules/hids/cis_linn.yml')
 
-    def remote_etc_check(self):
-        scan_res = {}
-        rhost_info = self.rhost_info
-        # 遍历需要检查的远程主机信息
-        for info in rhost_info:
-            # 与远程服务器建立连接
-            sftp = linn_utils.remote_ssh_conn(info)
-            # 遍历需要检查的配置文件
-            for file in self.etc_files:
-                # 下载远程主机上的配置文件
-                localpath = f"/tmp/linn/etc/{info['ip']}_{file.split('/')[-1]}"
-                if not os.path.isdir("/tmp/linn/etc"):
-                    os.makedirs("/tmp/linn/etc")
-                sftp.get(file, localpath)
+    # def remote_etc_check(self):
+    #     scan_res = {}
+    #     rhost_info = self.rhost_info
+    #     # 遍历需要检查的远程主机信息
+    #     for info in rhost_info:
+    #         # 与远程服务器建立连接
+    #         sftp = linn_utils.remote_ssh_conn(info)
+    #         # 遍历需要检查的配置文件
+    #         for file in self.etc_files:
+    #             # 下载远程主机上的配置文件
+    #             localpath = f"/tmp/linn/etc/{info['ip']}_{file.split('/')[-1]}"
+    #             if not os.path.isdir("/tmp/linn/etc"):
+    #                 os.makedirs("/tmp/linn/etc")
+    #             sftp.get(file, localpath)
 
     def run(self):
         try:

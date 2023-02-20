@@ -20392,3 +20392,115 @@ tcp6       0      0 :::80                   :::*                    LISTEN      
 tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
 tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
 tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:39421         0.0.0.0:*               LISTEN      53634/node          
+tcp        0      0 127.0.0.1:39913         0.0.0.0:*               LISTEN      53372/node          
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      5024/sshd           
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1450/master         
+tcp        0      0 127.0.0.1:42594         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:2127       ESTABLISHED 53135/sshd: root@pt 
+tcp        0      0 127.0.0.1:42592         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:3376       ESTABLISHED 53262/sshd: root@no 
+tcp        0    100 192.168.79.128:22       192.168.79.1:4071       ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42592         ESTABLISHED 53372/node          
+tcp        0      0 192.168.79.128:22       192.168.79.1:3719       ESTABLISHED 53311/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42594         ESTABLISHED 53634/node          
+tcp6       0      0 :::443                  :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::3306                 :::*                    LISTEN      31995/mysqld        
+tcp6       0      0 :::80                   :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
+tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+tcp6       0      0 192.168.79.128:80       192.168.79.1:7350       TIME_WAIT   -                   
+tcp6       0      0 192.168.79.128:80       192.168.79.1:7349       TIME_WAIT   -                   
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:39421         0.0.0.0:*               LISTEN      53634/node          
+tcp        0      0 127.0.0.1:39913         0.0.0.0:*               LISTEN      53372/node          
+tcp        0      0 192.168.79.128:80       192.168.79.1:7547       SYN_RECV    -                   
+tcp        0      0 192.168.79.128:80       192.168.79.1:7548       SYN_RECV    -                   
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      5024/sshd           
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1450/master         
+tcp        0      0 127.0.0.1:42594         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:2127       ESTABLISHED 53135/sshd: root@pt 
+tcp        0      0 127.0.0.1:42592         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:3376       ESTABLISHED 53262/sshd: root@no 
+tcp        0     92 192.168.79.128:22       192.168.79.1:4071       ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42592         ESTABLISHED 53372/node          
+tcp        0      0 192.168.79.128:22       192.168.79.1:3719       ESTABLISHED 53311/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42594         ESTABLISHED 53634/node          
+tcp6       0      0 :::443                  :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::3306                 :::*                    LISTEN      31995/mysqld        
+tcp6       0      0 :::80                   :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
+tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+tcp6       0      1 192.168.79.128:80       192.168.79.1:7489       FIN_WAIT1   -                   
+tcp6       0      1 192.168.79.128:80       192.168.79.1:7528       FIN_WAIT1   -                   
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:39421         0.0.0.0:*               LISTEN      53634/node          
+tcp        0      0 127.0.0.1:39913         0.0.0.0:*               LISTEN      53372/node          
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      5024/sshd           
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1450/master         
+tcp        0      0 127.0.0.1:42594         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:2127       ESTABLISHED 53135/sshd: root@pt 
+tcp        0      0 127.0.0.1:42592         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:3376       ESTABLISHED 53262/sshd: root@no 
+tcp        0    100 192.168.79.128:22       192.168.79.1:4071       ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42592         ESTABLISHED 53372/node          
+tcp        0      0 192.168.79.128:22       192.168.79.1:3719       ESTABLISHED 53311/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42594         ESTABLISHED 53634/node          
+tcp6       0      0 :::443                  :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::3306                 :::*                    LISTEN      31995/mysqld        
+tcp6       0      0 :::80                   :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
+tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+tcp6       0      1 192.168.79.128:80       192.168.79.1:7489       FIN_WAIT1   -                   
+tcp6       0      1 192.168.79.128:80       192.168.79.1:7528       FIN_WAIT1   -                   
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:39421         0.0.0.0:*               LISTEN      53634/node          
+tcp        0      0 127.0.0.1:39913         0.0.0.0:*               LISTEN      53372/node          
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      5024/sshd           
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1450/master         
+tcp        0      0 127.0.0.1:42594         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:2127       ESTABLISHED 53135/sshd: root@pt 
+tcp        0      0 127.0.0.1:42592         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:3376       ESTABLISHED 53262/sshd: root@no 
+tcp        0    100 192.168.79.128:22       192.168.79.1:4071       ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42592         ESTABLISHED 53372/node          
+tcp        0      0 192.168.79.128:22       192.168.79.1:3719       ESTABLISHED 53311/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42594         ESTABLISHED 53634/node          
+tcp6       0      0 :::443                  :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::3306                 :::*                    LISTEN      31995/mysqld        
+tcp6       0      0 :::80                   :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
+tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+tcp6       0      0 192.168.79.128:80       192.168.79.1:8128       FIN_WAIT2   -                   
+tcp6       0      1 192.168.79.128:80       192.168.79.1:8013       FIN_WAIT1   -                   
+tcp6       0      0 192.168.79.128:80       192.168.79.1:8091       TIME_WAIT   -                   
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    
+tcp        0      0 127.0.0.1:39421         0.0.0.0:*               LISTEN      53634/node          
+tcp        0      0 127.0.0.1:39913         0.0.0.0:*               LISTEN      53372/node          
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      5024/sshd           
+tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      1450/master         
+tcp        0      0 127.0.0.1:42594         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:2127       ESTABLISHED 53135/sshd: root@pt 
+tcp        0      0 127.0.0.1:42592         127.0.0.1:39913         ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:3376       ESTABLISHED 53262/sshd: root@no 
+tcp        0      0 192.168.79.128:22       192.168.79.1:4071       ESTABLISHED 53578/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42592         ESTABLISHED 53372/node          
+tcp        0      0 192.168.79.128:22       192.168.79.1:3719       ESTABLISHED 53311/sshd: root@no 
+tcp        0      0 127.0.0.1:39913         127.0.0.1:42594         ESTABLISHED 53634/node          
+tcp6       0      0 :::443                  :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::3306                 :::*                    LISTEN      31995/mysqld        
+tcp6       0      0 :::80                   :::*                    LISTEN      31746/httpd         
+tcp6       0      0 :::21                   :::*                    LISTEN      31771/proftpd: (acc 
+tcp6       0      0 :::22                   :::*                    LISTEN      5024/sshd           
+tcp6       0      0 ::1:25                  :::*                    LISTEN      1450/master         
+tcp6       0      1 192.168.79.128:80       192.168.79.1:8013       FIN_WAIT1   -                   
