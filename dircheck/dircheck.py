@@ -4,7 +4,7 @@ import threading
 import os
 sys.path.append("..")
 from lib import tools
-
+from loguru import logger
 
 class DirCheck:
     def __init__(self, config, rules):
@@ -22,7 +22,7 @@ class DirCheck:
         self.rules = rules
     
     def check_dir_value(self, path):
-        # print(path)
+        # logger.info(path)
         with open(path, "r+b") as f:
             payload = f.read()
             # 规则匹配检测文件内容
@@ -34,7 +34,7 @@ class DirCheck:
 
     def check_file(self):
         while True:
-            print("开始检测目录")
+            logger.info("开始检测目录")
             for i in self.check_dir:
                 self.check_dir_value(i)
             time.sleep(self.config['checkFile']['set_ck_dir_time'])

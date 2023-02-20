@@ -2,7 +2,7 @@ import sys
 import threading
 import time
 import os
-
+from loguru import logger
 sys.path.append("..")
 from lib import tools
 
@@ -35,7 +35,7 @@ class Sca:
         path: 路径
         """
         for rule in self.rules:
-            # print(i)
+            # logger.info(i)
             if tools.check_value(rule['rules'].encode(), value):
                 rule['url'] = path
                 tools.alert_log(rule)

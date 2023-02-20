@@ -5,7 +5,7 @@
 # # 自定义线程函数
 # def my_threadfunc(name,times:int):
 #     for i in range(times):
-#         print("hello", name)
+#         logger.info("hello", name)
 #         time.sleep(1)
 
 
@@ -21,4 +21,4 @@
 # thread_01.start()
 
 while True:
-    print(1)
+    logger.info(1)

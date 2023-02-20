@@ -5,7 +5,7 @@ from lib import tools
 import re
 import os
 import time
-
+from loguru import logger
 
 class Capture:
     def __init__(self, rules, decoder, config) -> None:
@@ -38,12 +38,12 @@ class Capture:
         # 流量裁决
         self.verdict = 'accept'
         # 是否打印流量
-        self.print_net = config['checkFile']['print_net']
+        print_net = config['checkFile']['logger.info_net']
         # 用于记录规则调用次数
         self.check_rule_number = tools.CountRule()
 
     def pcre(self, p):
-        # print(p)遍li
+        # logger.info(p)遍li
         # 遍历规则长度
         for i in range(len(self.rules)):
             # 正则匹配rules
@@ -51,9 +51,9 @@ class Capture:
             if 'if' in self.rules[i]:
                 self.check_rule_number.check_rule(self.rules[i])
             else:
-                # print(tools.check_value(self.rules[i]['rules'], p))
+                # logger.info(tools.check_value(self.rules[i]['rules'], p))
                 if tools.check_value(self.rules[i]['rules'], p):
-                    # print(self.rules[i])
+                    # logger.info(self.rules[i])
                     self.check_rule_number.check_rule(self.rules[i])
                     self.decoder_extract(p, self.rules[i])
                     # self.check_rule_number.check_rule(self.rules[i])
@@ -67,8 +67,8 @@ class Capture:
         tools.alert_log(log)
 
     def action(self, srcip):
-        print("疑似遭受到cc和dos攻击" + self.code['http'].decode())
-        print("封禁IP" + srcip)
+        logger.debug("疑似遭受到cc和dos攻击" + self.code['http'].decode())
+        logger.debug("封禁IP" + srcip)
         tools.block(srcip)
 
     def check_ip(self, srcip):
@@ -104,7 +104,7 @@ class Capture:
             # 替换换行和回车为逗号
             request_body = x.lastlayer().original.decode().replace('\r\n', ',')
             if self.print_net:
-                print(request_body)
+                logger.info(request_body)
             # 获取源IP地址
             srcip = x.src
             # 白名单跳过
@@ -121,12 +121,12 @@ class Capture:
     def new_thread(self):
 
         try:
-            print("正在对网络进行进行监控")
+            logger.info("正在对网络进行进行监控")
             if not self.nfq:
-                print("使用SCAPY进行流量监控")
+                logger.info("使用SCAPY进行流量监控")
                 sniff(filter="tcp", iface=self.iface, prn=lambda x: self.run(x))
             else:
-                print("使用IPTABLES NFQUEUE进行流量监控")
+                logger.info("使用IPTABLES NFQUEUE进行流量监控")
                 os.system("iptables -I INPUT -j NFQUEUE --queue-num 1 --queue-bypass")
                 queue = NetfilterQueue()
                 queue.bind(self.queue, lambda x: self.run(x))

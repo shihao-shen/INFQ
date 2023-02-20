@@ -2,6 +2,7 @@ from lib import tools
 from filescan.filecheck import FileCheck
 from exec.exec_shell import ExecShell
 from dircheck.dircheck import DirCheck
+from loguru import logger
 from sca.sca import Sca
 import threading
 import linn_utils
@@ -22,7 +23,7 @@ class Ids:
     config = {}
 
     def __init__(self):
-        print("加载配置文件")
+        logger.info("加载配置文件")
         # yaml解码
         self.config = tools.decode_yaml("./conf/config.yml")
         # 日志文件路径列表
@@ -30,7 +31,7 @@ class Ids:
         # 需要监控的目录路径列表
         self.dir_files = self.config['checkFile']['dir']
 
-        print("加载日志文件")
+        logger.info("加载日志文件")
         # [{'id': 1, 'title': '标题', 'description': '描述', 'level': '等级', 'action': 'drop', 'rules': '规则 - "rules"'},
         # {'id': 2, 'title': '标题', 'description': '描述', 'level': '等级', 'action': 'drop', 'rules': '规则 - "rules"'}]
         self.log_rules = tools.foreach_rules(tools.find_file('./conf/rules/nids'))
@@ -41,7 +42,7 @@ class Ids:
         self.command = tools.foreach_rules(tools.find_file('./conf/command/'))
         self.dircheck_rule = tools.foreach_rules(tools.find_file('./conf/dir'))
         self.sca_rules = tools.foreach_rules(tools.find_file('./conf/sca'))
-        # print(self.sca_rules)
+        # logger.info(self.sca_rules)
         self.etc_files = self.config['checkFile']['etc']
         # 需要远程监控主机信息
         self.rhost_info = self.config['checkFile']['rhost']
@@ -57,7 +58,7 @@ class Ids:
         self.Capture = flow.Capture(self.log_rules, self.decoder, self.config)
         # 配置文件监控
         self.sca = Sca(self.sca_rules, self.config['checkFile']['sca'], self.config)
-        # print(self.decoder)
+        # logger.info(self.decoder)
         # self.etc_rules = tools.decode_yaml('./conf/rules/hids/cis_linn.yml')
 
     def remote_etc_check(self):
@@ -98,12 +99,12 @@ class Ids:
             self.dir_check.run()
             self.sca.run()
             while True:
-                print("正在监控则规")
+                logger.info("正在监控则规")
                 self.exec_shell.run()
                 time.sleep(self.config['checkFile']['set_ck_file_time'])
         except KeyboardInterrupt:
             import os
-            print("退出程序")
+            logger.info("退出程序")
             if self.config['checkFile']:
                 os.system("iptables -D INPUT -j NFQUEUE --queue-num 1 --queue-bypass")
             sys.exit()

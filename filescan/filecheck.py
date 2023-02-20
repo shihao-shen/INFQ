@@ -5,6 +5,7 @@ import sys
 import os
 sys.path.append("..")
 from lib import tools
+from loguru import logger
 
 
 class MyEventHandler(pyinotify.ProcessEvent):
@@ -38,7 +39,7 @@ class MyEventHandler(pyinotify.ProcessEvent):
         self.alert()
 
     def alert(self):
-        # print(self.title+":"+self.url)
+        # logger.info(self.title+":"+self.url)
         logs = {"method": self.method, "url": self.url, "title": self.title, "level": 5, "id": self.id}
         tools.alert_log(logs)
 
@@ -60,7 +61,7 @@ class FileCheck:
         self.notifier = None
         self.check_rules_number = tools.CountRule()
         for i in self.log:
-            # print("开始监控："+i)
+            # logger.info("开始监控："+i)
             if not os.path.isfile(i):
                 continue
             f = open(i)
@@ -97,7 +98,7 @@ class FileCheck:
             实时监控日志
         """
         while True:
-            # print("正在监控文件")
+            # logger.info("正在监控文件")
             for f in self.log_file:
                 array = f.readlines()
                 if len(array) > 0:
@@ -125,12 +126,12 @@ class FileCheck:
             self.wm.add_watch(file, mask)
 
     def run(self):
-        print("监控目录")
+        logger.info("监控目录")
         self.check_dir()
         check_dir = threading.Thread(target=self.notifier.loop)
         check_dir.setDaemon(True)
         check_dir.start()
-        print("监控日志")
+        logger.info("监控日志")
         check_log = threading.Thread(target=self.check_log)
         check_log.setDaemon(True)
         check_log.start()

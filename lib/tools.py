@@ -4,7 +4,7 @@ import re
 import json
 import time
 import base64
-
+from loguru import logger
 
 class CountRule:
     _instance = None
@@ -24,7 +24,7 @@ class CountRule:
         # 判断是否需要检测规则预警次数
         if 'if' in rule and 'rule' not in rule:
             # 判断指定规则预警次数，是否大于限定次数
-            # print(self.rule_count)
+            # logger.info(self.rule_count)
             if str(rule['if']['id']) in self.rule_count:
                 if self.rule_count[str(rule['if']['id'])] >= rule['if']['number']:
                     rule['url'] = "id " + str(rule['id'])
@@ -34,7 +34,7 @@ class CountRule:
                     alert_log(rule)
         else:
             self.add_number(rule['id'])
-        # print(self.rule_count)
+        # logger.info(self.rule_count)
 
     def add_number(self, id):
         """
@@ -55,7 +55,7 @@ class CountRule:
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(CountRule, cls).__new__(cls, *args, **kwargs)
-            # print('ssss')
+            # logger.info('ssss')
         return cls._instance
 
 
@@ -72,22 +72,22 @@ def find_file(search_path, exclude_dir=None):
     
     # 获取路径下所有文件
     if not os.path.isdir(search_path):
-        print("未发现目录")
+        logger.debug("未发现目录")
         return
     file_or_dir = os.listdir(search_path)
     for file_dir in file_or_dir:
         file_or_dir_path = os.path.join(search_path, file_dir)
         # 判断该路径是不是路径，如果是，递归调用
         if os.path.isdir(file_or_dir_path):
-            # print('Path: '+ file_or_dir_path)
+            # logger.info('Path: '+ file_or_dir_path)
             # 白名单跳过
             if file_or_dir_path in exclude_dir:
-                # print(file_or_dir_path)
+                # logger.info(file_or_dir_path)
                 continue
             # 递归，最终会将所有找到的文件，添加到files列表
             files = files + find_file(file_or_dir_path)
         else:
-            # print(file_or_dir_path)
+            # logger.info(file_or_dir_path)
             files.append(file_or_dir_path)
     return files
 
@@ -125,7 +125,7 @@ def foreach_rules(file_list: list):
     """
     rules = []
     for i in file_list:
-        # print(decode_yaml(i))
+        # logger.info(decode_yaml(i))
         rules += decode_yaml(i)
     return rules
 
@@ -138,7 +138,7 @@ def check_value(pcre, log):
     :return: 返回布尔值
     """
     search_obj = re.findall(pcre, log, re.M | re.I)
-    # print(search_obj)
+    # logger.info(search_obj)
     if search_obj:
         return True
     return False
@@ -154,7 +154,7 @@ def extract_fields(pcre, log, fields):
     """
     # pcre = pcre.replace("\\\\", "\\")
     find = re.findall(pcre, log)
-    # print(find)
+    # logger.info(find)
     return dict(zip(fields, find[0]))
 
 
@@ -179,7 +179,7 @@ def alert_log(log_dict):
     if log_dict['level'] >= alert_level:
         # 发送邮箱IP
         sed_email(log, send, to, base64.b64decode(passwd).decode())
-        # print("log_dict")
+        # logger.info("log_dict")
 
 
 def sed_email(log, send, to, passwd):
@@ -188,7 +188,7 @@ def sed_email(log, send, to, passwd):
     # email模块主要处理邮件的头和正文等数据
     from email.mime.multipart import MIMEMultipart
     from email.mime.text import MIMEText
-    print("发送邮件")
+    logger.info("发送邮件")
     # 定义发件人和收件人
     sender = send  # 发送邮箱
     receiver = to  # 接收邮箱
@@ -220,7 +220,7 @@ def block(srcip):
     cmd = f"iptables -I INPUT -s {srcip} -p tcp --dport 80  -j DROP"
     res = os.popen(cmd).read()
     if 'success' in res:
-        print(f"成功封禁攻击源{srcip}!")
+        logger.info(f"成功封禁攻击源{srcip}!")
 
 
 # 远程日志接收

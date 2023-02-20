@@ -1,5 +1,6 @@
 import yaml,os,socket,time,psutil,datetime,json
 from interval import Interval
+from loguru import logger
 
 def foreach_rules(file_list: list):
     """
@@ -33,20 +34,20 @@ def socket_conn(ip,port:int):
 def monitor_log(client,logpath):
         file = open(file=logpath,mode='r')
         file.seek(0, 2) # 直接定位到文件末尾
-        print(f"================ 开始实时读取日志信息{logpath} ================")
+        logger.info(f"================ 开始实时读取日志信息{logpath} ================")
         # client.send(logpath.encode())
         while True:
             try:
                 list = file.readlines()		# 每一次均读取最新内容，此处并不需要使用f.tell()，因为readlines会读取到最后位置
-                print(len(list))
+                logger.info(len(list))
                 if len(list) > 0:
                     for line in list:
-                        print((logpath+'::'+line).encode())
+                        logger.info((logpath+'::'+line).encode())
                         log_name = logpath.split('/')[-1]
                         client.sendall(('192.168.10.133::'+log_name+'::'+line).encode())
                 time.sleep(5)
             except:
-                print('error')
+                logger.info('error')
 
 def monitor_system(client,time):
     # cpu的使用率
@@ -61,7 +62,7 @@ def monitor_system(client,time):
     current_time = datetime.datetime.now().strftime("%F %T")  # %F年月日 %T时分秒
     sys_status={'time':current_time,'cup':str(cup_per)+'%','memory':str(mem_info.percent)+'%','disk':str(disk_info.percent)+'%','net':['%.2f'%(net.bytes_recv/1024/1024),'%.2f'%(net.bytes_sent/1024/1024)]}
     send_info = json.dumps(sys_status)
-    print('system.log::'+send_info)
+    logger.info('system.log::'+send_info)
     client.sendall(('192.168.10.133::system.log::'+send_info+'\n').encode())
 
 #socket发送日志（udp连接）

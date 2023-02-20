@@ -1,6 +1,7 @@
 import tools
 import threading
 import time
+from loguru import logger
 
 class ips_client:
     rhost_info = []
@@ -19,7 +20,7 @@ class ips_client:
 
     def send_log(self):
         for log in self.local_logs:
-            print(f'创建一个线程发送{log}')
+            logger.info(f'创建一个线程发送{log}')
             a = threading.Thread(target=tools.monitor_log,args=(self.client,log))
             a.start()
     
@@ -41,6 +42,6 @@ if __name__ == "__main__":
 
 
 # data = tools.decode_yaml('./config.yml')
-# print(data['etc'])
+# logger.info(data['etc'])
 
   

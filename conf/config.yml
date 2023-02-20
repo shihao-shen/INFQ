@@ -18,7 +18,7 @@ checkFile:
   sca:
     - /opt/lampp/etc/php.ini
   # 打印网络流量
-  print_net: true
+  logger.info_net: true
   # 设置配置文件扫描时间
   set_ck_sca_time: 10000
   # 设置多少等级发送邮件和封闭IP

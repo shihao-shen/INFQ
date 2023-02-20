@@ -3,7 +3,7 @@ import time
 
 sys.path.append("..")
 from lib import tools
-
+from loguru import logger
 
 class ExecShell:
     """
@@ -21,7 +21,7 @@ class ExecShell:
 
     def run(self):
         timestamp = time.time()
-        # print(timestamp)
+        # logger.info(timestamp)
         for i in self.shell_list:
             if i['timestamp'] < timestamp - i['time']:
                 with open(r'logs/command.log', 'a') as f:

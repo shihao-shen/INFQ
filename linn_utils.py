@@ -4,7 +4,7 @@ import psutil
 import re
 import socket
 import time
-
+from loguru import logger
 
 def etc_rule_check(filepath, ruleset: dict, ignored_char):
     scan_res = []
@@ -29,7 +29,7 @@ def remote_ssh_conn(info):
     return sftp
     # # 在远程主机上支持命令，并获取返回结果（以元组形式返回输入，输出和错误）
     # stdin, stdout, stderr = ssh.exec_command("ifconfig")
-    # print(stdout.read().decode())
+    # logger.info(stdout.read().decode())
     # # 上传文件到远程主机
     # sftp.put(r'D:\test-base64.html', r'/tmp/test-base64.html')
     # # 从远程主机上下载文件
@@ -44,7 +44,7 @@ def receive_log():
     while True:
         receive = chanel.recv(4096).decode()
         if not receive == '':
-            print(receive)
+            logger.info(receive)
             with open(f'/tmp/linn/logs/remote.log', 'a+') as file:
                 file.write(receive)
 
@@ -71,7 +71,7 @@ def local_monitor(time):
         log = {'time': current_time, 'method': 'localhost', 'url': 'cup负载过高', 'level': '8',
                        'title': '主机状态监控'}
         tools.alert_log(log)
-        print('cup负载过高')
+        logger.info('cup负载过高')
     elif mem_info.percent > 95:
         log = {'time': current_time, 'method': 'localhost', 'url': '内存占用过高', 'level': '8',
                        'title': '主机状态监控'}
@@ -81,15 +81,15 @@ def local_monitor(time):
         log = {'time': current_time, 'method': 'localhost', 'url': '硬盘占用过高', 'level': '8',
                        'title': '主机状态监控'}
         tools.alert_log(log)
-        print('硬盘占用过高')
-    print(sys_status)
+        logger.info('硬盘占用过高')
+    logger.info(sys_status)
 
 
 def classify_log(mlog_path):
-    # print(mlog_path)
+    # logger.info(mlog_path)
     origin_log = open(file=mlog_path,mode='r')
     origin_log.seek(0, 2) # 直接定位到文件末尾
-    print("================ 开始分类远程日志信息 ================")
+    logger.info("================ 开始分类远程日志信息 ================")
     while True:
         try:
             list = origin_log.readlines()		# 每一次均读取最新内容，此处并不需要使用f.tell()，因为readlines会读取到最后位置
