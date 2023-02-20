@@ -1885,3 +1885,8 @@
 2023-02-14 15:35:09 NET p level：2 类型：访问敏感数据
 2023-02-14 15:35:10 NET p level：2 类型：访问敏感数据
 2023-02-14 15:35:13 NET p level：2 类型：访问敏感数据
+2023-02-17 16:51:14 SCA /opt/lampp/etc/php.ini level：5 类型：PHP本地包含配置被篡改
+2023-02-17 16:51:14 SCA /opt/lampp/etc/php.ini level：5 类型：PHP版本显示配置被篡改
+2023-02-17 16:51:14 SCA /opt/lampp/etc/php.ini level：5 类型：PHP指定操作目录被篡改
+2023-02-17 16:51:14 SCA /opt/lampp/etc/php.ini level：5 类型：PHP未禁用敏感函数
+2023-02-17 16:51:14 SCA /opt/lampp/etc/php.ini level：4 类型：PHP未关闭php版本信息
