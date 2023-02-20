@@ -60,6 +60,8 @@ class FileCheck:
         self.decoders = decoders
         self.notifier = None
         self.check_rules_number = tools.CountRule()
+        if self.log is None:
+            return None
         for i in self.log:
             # logger.info("开始监控："+i)
             if not os.path.isfile(i):
@@ -122,8 +124,9 @@ class FileCheck:
         """
         self.notifier = pyinotify.Notifier(self.wm, self.handler)
         mask = pyinotify.IN_DELETE | pyinotify.IN_MODIFY | pyinotify.IN_CREATE
-        for file in self.dir:
-            self.wm.add_watch(file, mask)
+        if self.dir is not None:
+            for file in self.dir:
+                self.wm.add_watch(file, mask)
 
     def run(self):
         logger.info("监控目录")

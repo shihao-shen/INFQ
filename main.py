@@ -27,15 +27,23 @@ class Ids:
         # yaml解码
         self.config = tools.decode_yaml("./conf/config.yml")
         # 日志文件路径列表
-        self.log_files = self.config['checkFile']['log']
+        if self.config['checkFile'].__contains__("log"):
+            self.log_files = self.config['checkFile']['log']
+        else:
+            self.log_files = []
         # 需要监控的目录路径列表
-        self.dir_files = self.config['checkFile']['dir']
+        if self.config['checkFile'].__contains__("log"):
+            self.dir_files = self.config['checkFile']['dir']
+        else:
+            self.dir_files = []
+            
 
         logger.info("加载日志文件")
         # [{'id': 1, 'title': '标题', 'description': '描述', 'level': '等级', 'action': 'drop', 'rules': '规则 - "rules"'},
         # {'id': 2, 'title': '标题', 'description': '描述', 'level': '等级', 'action': 'drop', 'rules': '规则 - "rules"'}]
         self.log_rules = tools.foreach_rules(tools.find_file('./conf/rules/nids'))
         self.dir_rules = tools.foreach_rules(tools.find_file('./conf/rules/hids'))
+        
         self.decoder = tools.merge(tools.foreach_rules(tools.find_file('./conf/decoder/')))
         # for i in self.decoder:
 

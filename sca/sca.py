@@ -19,6 +19,8 @@ class Sca:
     def read_files(self):
         # 读取文件
         while True:
+            if self.files is None:
+                return None
             for i in self.files:
                 # 打开文件
                 if not os.path.isfile(i):

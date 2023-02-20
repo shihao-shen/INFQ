@@ -1900,3 +1900,8 @@
 {"id": 561505, "title": "PHP\u6307\u5b9a\u64cd\u4f5c\u76ee\u5f55\u88ab\u7be1\u6539", "level": 5, "method": "SCA", "rules": "open_basedir =", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:44:23"}
 {"id": 561506, "title": "PHP\u672a\u7981\u7528\u654f\u611f\u51fd\u6570", "level": 5, "method": "SCA", "rules": "disable_functions=", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:44:23"}
 {"id": 1, "title": "PHP\u672a\u5173\u95edphp\u7248\u672c\u4fe1\u606f", "level": 4, "rules": "expose_php=On", "method": "SCA", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:44:23"}
+{"id": 561502, "title": "PHP\u672c\u5730\u5305\u542b\u914d\u7f6e\u88ab\u7be1\u6539", "level": 5, "method": "SCA", "rules": "allow_url_fopen=On", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:47:33"}
+{"id": 561504, "title": "PHP\u7248\u672c\u663e\u793a\u914d\u7f6e\u88ab\u7be1\u6539", "level": 5, "method": "SCA", "rules": "expose_php=On", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:47:33"}
+{"id": 561505, "title": "PHP\u6307\u5b9a\u64cd\u4f5c\u76ee\u5f55\u88ab\u7be1\u6539", "level": 5, "method": "SCA", "rules": "open_basedir =", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:47:33"}
+{"id": 561506, "title": "PHP\u672a\u7981\u7528\u654f\u611f\u51fd\u6570", "level": 5, "method": "SCA", "rules": "disable_functions=", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:47:33"}
+{"id": 1, "title": "PHP\u672a\u5173\u95edphp\u7248\u672c\u4fe1\u606f", "level": 4, "rules": "expose_php=On", "method": "SCA", "url": "/opt/lampp/etc/php.ini", "time": "2023-02-20 12:47:34"}

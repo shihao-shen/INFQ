@@ -3,20 +3,20 @@ checkFile:
   set_ck_dir_time: 100
   # 需要监控的目录
   dir:
-    - /opt/lampp/htdocs
+    # - /opt/lampp/htdocs
   # 白名单
   exclude_dir:
-    - /opt/lampp/htdocs/test
+    # - /opt/lampp/htdocs/test
   # 设置扫描日志的时间
   set_ck_file_time: 100
   # 需要监控的日志文件，单位秒
   log:
-    - /var/log/secure
-    - /opt/lampp/logs/access_log
-    - logs/command.log
+    # - /var/log/secure
+    # - /opt/lampp/logs/access_log
+    # - logs/command.log
   # 对配置文件进行检测
   sca:
-    - /opt/lampp/etc/php.ini
+    # - /opt/lampp/etc/php.ini
   # 打印网络流量
   logger.info_net: true
   # 设置配置文件扫描时间
@@ -25,11 +25,11 @@ checkFile:
   set_send_email_and_block: 10
   # 设置邮箱配置信息
   # 发件人
-  set_send_email: 1424741814@qq.com
+  set_send_email: email
   # 收件人
-  set_get_email: 1424741814@qq.com
+  set_get_email: email
   # 设置密码
-  set_token_email: dnVsdmdsc2hwcHFsZ2VnYw==
+  set_token_email: ssss
   # 设置检测协议
   protocol: http
   # 设置白名单
@@ -49,7 +49,7 @@ checkFile:
   # 是否开启远程服务
   remote: false
   etc:
-    - '/opt/lampp/etc/php.ini'
+    # - '/opt/lampp/etc/php.ini'
   # 远程主机
   rhost:
     - hostnum: 1

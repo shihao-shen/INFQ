@@ -13,11 +13,11 @@ class DirCheck:
         self.config = config
         # 遍历需要检测的目录
         self.check_dir = []
-        for i in self.config['checkFile']['dir']:
-            if not os.path.isdir(i):
-                continue
-
-            self.check_dir = self.check_dir + tools.find_file(i, self.config['checkFile']['exclude_dir'])
+        if self.config['checkFile']['dir'] is not None:
+            for i in self.config['checkFile']['dir']:
+                if not os.path.isdir(i):
+                    continue
+                self.check_dir = self.check_dir + tools.find_file(i, self.config['checkFile']['exclude_dir'])
         # 获取规则
         self.rules = rules
     
